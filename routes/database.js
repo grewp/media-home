@@ -15,7 +15,6 @@ router.get('/find/:search', (req, res) =>  {
 
     let coll = req.database.getCollection('movies');
     let movies = coll.find({ name: { '$regex': new RegExp(search, 'i') } });
-    console.log(movies);
 
     render(res, movies);
 });
