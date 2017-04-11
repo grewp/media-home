@@ -3,6 +3,7 @@
 function create(app) {
     app.use('/',         require('./routes/database'));
     app.use('/login',	 require('./routes/login'));
+    app.use('/manage',	 require('./routes/manage'));
 
     app.use((req, res, next) => {
         res.status(404);

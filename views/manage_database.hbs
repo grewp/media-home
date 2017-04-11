@@ -25,6 +25,7 @@
                 <td align="left">{{name}}</td>
                 <td align="center">{{ID}}</td>
                 <td align="center">{{owned}}</td>
+                <td align="center"><button onclick="toggleOwned();">Add/Remove</button></td>
             </tr>
         {{/each}}
     </table>
@@ -35,10 +36,16 @@
         let val = $('#search').val().trim();
 
         if (val && val.length > 2) {
-            window.location = '/find/' + val;
+            window.location = '/manage/find/' + val;
         }
         else {
             alertify.alert('Hey!', 'Please type a minimum of 3 characters into the search field!', null);
         }
+    }
+    function toggleOwned() {
+        //will need to dispatch a post request with the context name
+        //need to figure out how to get the correct movie information from the button
+        console.log('toggled');
+        console.log(this);
     }
 </script>
