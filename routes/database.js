@@ -4,8 +4,15 @@ let router = require('express').Router();
 router.get('/', (req, res) => {
     let coll = req.database.getCollection('movies');
     let movies = coll.chain().simplesort('name').data();
+    let admin = false;
 
-    render(res, movies);
+    if (req.session.isAuthenticated) {
+        console.log("Admin");
+        console.log(req.session.isAuthenticated);
+        admin = true;
+    } 
+
+    render(res, movies, admin);
 });
 
 
@@ -19,10 +26,11 @@ router.get('/find/:search', (req, res) =>  {
     render(res, movies);
 });
 
-function render(res, movies) {
+function render(res, movies, admin) {
     res.render('database', {
         title: 'Movies',
-        movies: movies
+        movies: movies,
+        admin: admin
     });
 }
 

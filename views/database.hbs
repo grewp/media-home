@@ -3,6 +3,12 @@
 </section>
 
 <section>
+    {{#if admin}}
+        <h1>Hello admin</h1>
+    {{/if}}
+</section>
+
+<section>
     <input id="search" type="text" placeholder="Search here...">
     <button onclick="search();">SEARCH</button>
     <br><br>

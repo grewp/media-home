@@ -4,9 +4,11 @@ let path         = require('path');
 let express      = require('express');
 let expressHbs   = require('express-handlebars');
 let cookieParser = require('cookie-parser');
+let cookieSession = require('cookie-session');
 let bodyParser   = require('body-parser');
 let loki         = require('lokijs');
 let routes       = require('./routes');
+let uuid 		 = require('node-uuid');
 
 
 //setup
@@ -26,6 +28,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/public', express.static('public'));
+
+var generateCookieSecret = function () {
+  return 'iamasecret' + uuid.v4();
+};
+
+app.use(cookieSession({
+  secret: generateCookieSecret()
+}));
 
 //loki db reference for the router
 app.use((req, res, next) => { req.database = database; next(); });
