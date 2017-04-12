@@ -45,7 +45,7 @@ function seed (data) {
     movies.insert({
       name: element,
       ID: '',
-      owned: 'no'
+      owned: false
     });
   });
 

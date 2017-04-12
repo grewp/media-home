@@ -2,11 +2,6 @@
     <h3>{{title}}</h3>
 </section>
 
-<section>
-    {{#if admin}}
-        <a href=/manage><button>ManageDb</button></a>
-    {{/if}}
-</section>
 
 <section>
     <input id="search" type="text" placeholder="Search here...">
@@ -25,7 +20,8 @@
                 <td align="left">{{name}}</td>
                 <td align="center">{{ID}}</td>
                 <td align="center">{{owned}}</td>
-                <td align="center"><button onclick="toggleOwned();">Add/Remove</button></td>
+                <td align="center">
+                <form action="/manage/update" method="post"><button name="movie" value="{{name}}" onclick="toggleOwned('{{name}}');">Add/Remove</button></form></td>
             </tr>
         {{/each}}
     </table>
@@ -42,10 +38,10 @@
             alertify.alert('Hey!', 'Please type a minimum of 3 characters into the search field!', null);
         }
     }
-    function toggleOwned() {
-        //will need to dispatch a post request with the context name
-        //need to figure out how to get the correct movie information from the button
-        console.log('toggled');
-        console.log(this);
+    function toggleOwned(name) {
+        //console.log('toggled');
+        //console.log(name); //passed movie name as param
+        //how to forward this info to the router? need to create a new post request
+
     }
 </script>

@@ -15,7 +15,6 @@ router.get('/', (req, res) => {
     render(res, movies, admin);
 });
 
-
 //out of the box search solution, can be improved a lot
 router.get('/find/:search', (req, res) =>  {
     let search = req.params.search;

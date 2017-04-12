@@ -21,11 +21,13 @@
         </tr>
 
         {{#each movies}}
-            <tr>
-                <td align="left">{{name}}</td>
-                <td align="center">{{ID}}</td>
-                <td align="center">{{owned}}</td>
-            </tr>
+            {{#if owned}}
+                <tr>
+                    <td align="left">{{name}}</td>
+                    <td align="center">{{ID}}</td>
+                    <td align="center">{{owned}}</td>
+                </tr>
+            {{/if}}
         {{/each}}
     </table>
 </section>
