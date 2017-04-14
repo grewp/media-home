@@ -6,6 +6,7 @@
 <section>
     <input id="search" type="text" placeholder="Search here...">
     <button onclick="search();">SEARCH</button>
+    <a href=/manage/entry><button>CUSTOM ENTRY</button></a>
     <br><br>
 
     <table class="users" cellpadding="10">
@@ -37,11 +38,5 @@
         else {
             alertify.alert('Hey!', 'Please type a minimum of 3 characters into the search field!', null);
         }
-    }
-    function toggleOwned(name) {
-        //console.log('toggled');
-        //console.log(name); //passed movie name as param
-        //how to forward this info to the router? need to create a new post request
-
     }
 </script>

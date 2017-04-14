@@ -8,6 +8,7 @@
     {{/if}}
 </section>
 
+
 <section>
     <input id="search" type="text" placeholder="Search here...">
     <button onclick="search();">SEARCH</button>
@@ -16,19 +17,30 @@
     <table class="users" cellpadding="10">
         <tr>
             <td align="left">NAME</td>
-            <td align="left">ID</td>
-            <td align="center">OWNED</td>
+            <td align="center">AVAILABLE</td>
         </tr>
-
-        {{#each movies}}
-            {{#if owned}}
-                <tr>
-                    <td align="left">{{name}}</td>
-                    <td align="center">{{ID}}</td>
-                    <td align="center">{{owned}}</td>
-                </tr>
-            {{/if}}
-        {{/each}}
+        {{# if admin}}
+            {{#each movies}}
+                {{#if owned}}
+                    <tr>
+                        <td align="left">{{name}}</td>
+                        <td align="center">{{available}}</td>
+                        <td align="center">
+                            <form action="/manage/rent" method="post"><button name="movie" value="{{name}}" onclick="toggleOwned('{{name}}');">Rent</button></form>
+                        </td>
+                    </tr>
+                {{/if}}
+            {{/each}}
+        {{else}}
+            {{#each movies}}
+                {{#if owned}}
+                    <tr>
+                        <td align="left">{{name}}</td>
+                        <td align="center">{{available}}</td>
+                    </tr>
+                {{/if}}
+            {{/each}}
+        {{/if}}
     </table>
 </section>
 
